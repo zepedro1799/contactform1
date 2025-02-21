@@ -1,0 +1,108 @@
+<div class="form-container">
+    <h2>Get Your Free Guide</h2>
+    <form id="contactForm">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="text" name="company" placeholder="Company Name" required>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<style>
+    .form-container {
+        font-family: 'garet';
+        background: #fff;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 300px;
+        margin: auto;
+    }
+    h2 {
+        color: #292929;
+    }
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: 'garet'
+    }
+    button {
+        background: #e91e63;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-family: 'garet'
+    }
+    button:hover {
+        background: #d81b60;
+    }
+</style>
+
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevents the default form submission
+        window.location.href = "https://speed-platform-2671.my.salesforce.com/sfc/p/KB000000J59H/a/KB000000PKzO/Cr2VrgMpS2oQNLdKuatP2lyFB2MBI6fShjx1DSkPtHo"; // Redirects after submission
+    });
+</script>
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+    
+        let formData = {
+            name: document.querySelector("[name='name']").value,
+            email: document.querySelector("[name='email']").value,
+            company: document.querySelector("[name='company']").value
+        };
+    
+        fetch("YOUR_GOOGLE_APPS_SCRIPT_URL", {
+            method: "POST",
+            body: JSON.stringify(formData),
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => response.text())
+        .then(data => {
+            if (data === "Success") {
+                window.location.href = "https://script.google.com/macros/s/AKfycbzPWp6piLf1e3XK6UEFOLePncBJfLxXo1NVEM5xndXNkfBbn61opufhiR_-uOmsxA8rTQ/exec"; // Redirect after submission
+            } else {
+                alert("Error submitting form.");
+            }
+        })
+        .catch(error => console.error("Fetch Error:", error));
+    });
+  
+    .catch(error => console.error("Fetch Error:", error));
+});
+</script>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    console.log("Form submitted!"); // ✅ Check if this appears in the Console
+
+    let formData = new FormData();
+    formData.append("entry.420788415", document.querySelector("[name='name']").value);
+    formData.append("entry.553274032", document.querySelector("[name='email']").value);
+    formData.append("entry.895210594", document.querySelector("[name='company']").value);
+
+    console.log("Form data ready:", formData); // ✅ Check if form data appears
+
+    fetch("https://docs.google.com/forms/d/e/1FAIpQLSeryLc3C9zPr_qNEnsx7JDgDtNia7UTh1UL42UbQ2Ozp8W1nw/formResponse", {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+    }).then(() => {
+        console.log("Fetch request sent!"); // ✅ Check if fetch request runs
+        alert("Form submitted successfully!");
+        window.location.href = "https://speed-platform-2671.my.salesforce.com/sfc/p/KB000000J59H/a/KB000000PKzO/Cr2VrgMpS2oQNLdKuatP2lyFB2MBI6fShjx1DSkPtHo"; // Change to thank-you page
+    }).catch(error => console.error("Fetch Error:", error));
+});
+</script>
+
+
